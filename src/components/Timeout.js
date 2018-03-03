@@ -6,7 +6,7 @@ const Placeholder = props => {
       {didTimeout => (
         <Fragment>
           <span hidden={didTimeout}>{props.children}</span>
-          {didTimeout ? props.fallback && props.fallback() : null}
+          {didTimeout ? props.fallback ? props.fallback : <h1>Loading...</h1> : null}
         </Fragment>
       )}
     </React.Timeout>

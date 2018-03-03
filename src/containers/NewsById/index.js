@@ -4,8 +4,7 @@ import React from "react";
 import { createResource as createDataFetcher } from "simple-cache-provider";
 
 import Placeholder from "../../components/Timeout";
-
-import withLayoutAndCache from "../../hocs";
+import withCache from "../../hocs/withCache";
 
 const newsByIdFetcher = createDataFetcher(async id => {
   const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`);
@@ -23,7 +22,7 @@ class NewsById extends React.PureComponent {
 
   render() {
     return (
-      <Placeholder ms={200} fallback={<h1>Loading...</h1>}>
+      <Placeholder ms={450}>
         <section className="news fade-in-up">
           <img
             alt="sample dummy"
@@ -38,4 +37,4 @@ class NewsById extends React.PureComponent {
   }
 }
 
-export default withLayoutAndCache(NewsById);
+export default withCache(NewsById);
