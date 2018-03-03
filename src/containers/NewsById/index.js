@@ -3,7 +3,7 @@ import "./index.css";
 import React from "react";
 import { createResource as createDataFetcher } from "simple-cache-provider";
 
-import Placeholder from "../../components/Placeholder";
+import Placeholder from "../../components/Timeout";
 
 import withLayoutAndCache from "../../hocs";
 
