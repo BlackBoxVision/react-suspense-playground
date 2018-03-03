@@ -8,8 +8,10 @@ const root = ReactDOM.createRoot(container);
 
 const AsyncMode = React.unstable_AsyncMode;
 
-root.render(
-  <AsyncMode>
-    <BlogApp />
-  </AsyncMode>
+ReactDOM.unstable_deferredUpdates(() =>
+  root.render(
+    <AsyncMode>
+      <BlogApp />
+    </AsyncMode>
+  )
 );

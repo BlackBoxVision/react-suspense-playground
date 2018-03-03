@@ -11,7 +11,7 @@ export const withRouter = Comp => props => (
     </RouterContext.Consumer>
 );
 
-export class Router extends React.Component {
+export class Router extends React.PureComponent {
     history = createBrowserHistory();
 
     state = {
@@ -40,7 +40,7 @@ export class Router extends React.Component {
     }
 }
 
-class RouteImpl extends React.Component {
+class RouteImpl extends React.PureComponent {
     state = {
         match: matchPath(this.props.location.pathname, this.props.path),
     };
@@ -69,7 +69,7 @@ class RouteImpl extends React.Component {
 
 export const Route = withRouter(RouteImpl);
 
-class LinkImpl extends React.Component {
+class LinkImpl extends React.PureComponent {
     handleClick = e => {
         e.preventDefault();
         this.props.history.push(this.props.to);

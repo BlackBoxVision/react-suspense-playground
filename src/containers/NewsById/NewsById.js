@@ -22,7 +22,7 @@ class NewsById extends React.PureComponent {
 
   render() {
     return (
-      <Placeholder ms={200} render={() => <h1>Loading..</h1>}>
+      <Placeholder ms={1500} render={() => <h1>Loading..</h1>}>
         <section className="news">
           <img
             alt="sample dummy"
