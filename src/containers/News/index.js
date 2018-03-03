@@ -3,7 +3,6 @@ import "./index.css";
 import React from "react";
 import { createResource as createDataFetcher } from "simple-cache-provider";
 
-import Placeholder from "../../components/Timeout";
 import { Link } from '../../components/Router';
 import withCache from "../../hocs/withCache";
 
@@ -26,18 +25,16 @@ class News extends React.PureComponent {
     news.length = 99;
 
     return (
-      <Placeholder ms={200}>
-        <div className="row">
-          {news.map(this.renderItem)}
-        </div>
-      </Placeholder>
+      <div className="row">
+        {news.map(this.renderItem)}
+      </div>
     );
   }
 
   renderItem = (nws, index) => (
     <div key={`nws.${index}`} className="col-4">
       <div className="card-item fade-in-up">
-        <Link to={`/${nws.id}`}>
+        <Link className="card-item-link" to={`/${nws.id}`}>
           <img
             alt="sample dummy"
             className="card-item-image"

@@ -50,7 +50,7 @@ class RouteImpl extends React.Component {
     }
 
     render() {
-        const { path, location, history, render, component: Component, exact } = this.props;
+        const { location, history, render, component: Component } = this.props;
         const { match } = this.state;
         const props = { location, history, match };
         if (match && match.isExact) {

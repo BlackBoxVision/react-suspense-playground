@@ -1,13 +1,13 @@
-import React, { Fragment } from "react";
+import React from "react";
 
 const Placeholder = props => {
   return (
     <React.Timeout ms={props.ms}>
-      {didTimeout => (
-        <Fragment>
+      {didTimeout => (console.info("didTimeout", didTimeout),
+        <React.Fragment>
           <span hidden={didTimeout}>{props.children}</span>
-          {didTimeout ? props.fallback ? props.fallback : <h1>Loading...</h1> : null}
-        </Fragment>
+          {didTimeout ? props.render(didTimeout) : null}
+        </React.Fragment>
       )}
     </React.Timeout>
   );

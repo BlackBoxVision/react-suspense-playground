@@ -3,7 +3,6 @@ import "./index.css";
 import React from "react";
 import { createResource as createDataFetcher } from "simple-cache-provider";
 
-import Placeholder from "../../components/Timeout";
 import withCache from "../../hocs/withCache";
 
 const newsByIdFetcher = createDataFetcher(async id => {
@@ -22,17 +21,15 @@ class NewsById extends React.PureComponent {
 
   render() {
     return (
-      <Placeholder ms={200}>
-        <section className="news fade-in-up">
-          <img
-            alt="sample dummy"
-            className="news-image"
-            src="https://dummyimage.com/530x145/212121/ffffff&text=PST"
-          />
-          <h1 className="news-title">{this.state.nws.title}</h1>
-          <p className="news-body">{this.state.nws.body}</p>
-        </section>
-      </Placeholder>
+      <section className="news">
+        <img
+          alt="sample dummy"
+          className="news-image"
+          src="https://dummyimage.com/530x145/212121/ffffff&text=PST"
+        />
+        <h1 className="news-title">{this.state.nws.title}</h1>
+        <p className="news-body">{this.state.nws.body}</p>
+      </section>
     );
   }
 }
