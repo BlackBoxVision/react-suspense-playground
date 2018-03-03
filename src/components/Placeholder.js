@@ -1,16 +1,27 @@
-import React from "react";
+import React, { Timeout } from "react";
 
-const Placeholder = props => {
-  return (
-    <React.Timeout ms={props.ms}>
-      {didTimeout => (console.info("didTimeout", didTimeout),
-        <React.Fragment>
-          <span hidden={didTimeout}>{props.children}</span>
-          {didTimeout ? props.render(didTimeout) : null}
-        </React.Fragment>
-      )}
-    </React.Timeout>
-  );
+class Placeholder extends React.Component {
+  state = {
+    loading: false
+  };
+
+  componentDidCatch(error, info) {
+    error.then(() => this.setState({
+      loading: false
+    }));
+
+    this.setState({
+      loading: true
+    });
+  }
+
+  render() {
+    return (
+      <Timeout ms={this.props.ms}>
+        {didTimeout => this.state.loading ? this.props.render(didTimeout) : this.props.children}
+      </Timeout>
+    );
+  }
 };
 
 export default Placeholder;

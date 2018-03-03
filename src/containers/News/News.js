@@ -26,7 +26,7 @@ class News extends React.PureComponent {
     news.length = 99;
 
     return (
-      <Placeholder ms={1500} render={() => <h1>Loading..</h1>}>
+      <Placeholder ms={200} render={() => <h1>Loading..</h1>}>
         <div className="row">
           {news.map(this.renderItem)}
         </div>
