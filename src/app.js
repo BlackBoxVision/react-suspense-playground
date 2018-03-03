@@ -18,6 +18,6 @@ export default class BlogApp extends React.Component {
   }
 
   renderError = ({ error, info }) => (console.info(error),
-    <div>Parece que ha habido un error.</div>
+    <div className="error-message">Parece que ha habido un error.</div>
   )
 }

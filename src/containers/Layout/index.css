@@ -83,3 +83,10 @@ body {
   -webkit-animation: fadeInUp 500ms;
   animation: fadeInUp 500ms;
 }
+
+.error-message {
+  width: 100%;
+  height: calc(100vh - 64px);
+  padding: 16px;
+  text-align: center;
+}

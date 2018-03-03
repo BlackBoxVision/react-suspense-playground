@@ -21,12 +21,13 @@ class News extends React.PureComponent {
   };
 
   render() {
-    this.state.news.length = 99;
+    const { news } = this.state;
+    news.length = 99;
 
     return (
       <Placeholder ms={450}>
         <div className="row">
-          {this.state.news.map(this.renderItem)}
+          {news.map(this.renderItem)}
         </div>
       </Placeholder>
     );
