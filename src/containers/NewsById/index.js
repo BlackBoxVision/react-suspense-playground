@@ -14,9 +14,15 @@ const newsByIdFetcher = createResource(async id => {
 });
 
 class NewsById extends React.PureComponent {
-  render() {
-    const nws = newsByIdFetcher(this.props.cache, this.props.id);
+  static getDerivedStateFromProps = (nextProps, prevState) => ({
+    nws: newsByIdFetcher(nextProps.cache, nextProps.id)
+  });
 
+  state = {
+    nws: {}
+  };
+
+  render() {
     return (
       <Placeholder ms={200} fallback={<h1>Loading...</h1>}>
         <section className="news fade-in-up">
@@ -25,8 +31,8 @@ class NewsById extends React.PureComponent {
             className="news-image"
             src="https://dummyimage.com/530x145/212121/ffffff&text=PST"
           />
-          <h1 className="news-title">{nws.title}</h1>
-          <p className="news-body">{nws.body}</p>
+          <h1 className="news-title">{this.state.nws.title}</h1>
+          <p className="news-body">{this.state.nws.body}</p>
         </section>
       </Placeholder>
     );

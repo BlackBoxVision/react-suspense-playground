@@ -14,21 +14,28 @@ const newsFetcher = createResource(async () => {
 });
 
 class News extends React.PureComponent {
+  static getDerivedStateFromProps = (nextProps, prevState) => ({
+    news: newsFetcher(nextProps.cache)
+  });
+
+  state = {
+    news: []
+  };
+
   render() {
-    const news = newsFetcher(this.props.cache);
-    news.length = 99;
+    this.state.news.length = 99;
 
     return (
-      <Placeholder ms={400} fallback={<h1>Loading...</h1>}>
+      <Placeholder ms={200} fallback={() => <h1>Loading...</h1>}>
         <div className="row">
-          {news && news.map(this.renderItem)}
+          {this.state.news.map(this.renderItem)}
         </div>
       </Placeholder>
     );
   }
 
   renderItem = (nws, index) => (
-    <div className="col-4">
+    <div key={`nws.${index}`} className="col-4">
       <div className="card-item fade-in-up">
         <img
           alt="sample dummy"
