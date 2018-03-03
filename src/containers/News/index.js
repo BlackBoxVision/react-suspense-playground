@@ -1,12 +1,13 @@
 import "./index.css";
 
 import React from "react";
-import { createResource as createDataFetcher } from "simple-cache-provider";
+import { createResource as createFetcher } from "simple-cache-provider";
 
+import Placeholder from '../../components/Placeholder';
 import { Link } from '../../components/Router';
 import withCache from "../../hocs/withCache";
 
-const newsFetcher = createDataFetcher(async () => {
+const newsFetcher = createFetcher(async () => {
   const res = await fetch(`https://jsonplaceholder.typicode.com/posts`);
   return await res.json();
 });
@@ -25,9 +26,11 @@ class News extends React.PureComponent {
     news.length = 99;
 
     return (
-      <div className="row">
-        {news.map(this.renderItem)}
-      </div>
+      <Placeholder ms={200} render={() => <h1>Loading..</h1>}>
+        <div className="row">
+          {news.map(this.renderItem)}
+        </div>
+      </Placeholder>
     );
   }
 
