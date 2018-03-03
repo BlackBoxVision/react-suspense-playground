@@ -1,5 +1,5 @@
 # Beyond React 16 
 
-This repo is inspired by Dan Abramov talk about React Suspense. 
+This demo is inspired by Dan Abramov talk about Time-Slicing and Suspense features. 
 
 
