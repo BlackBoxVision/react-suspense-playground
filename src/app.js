@@ -13,7 +13,10 @@ export default class BlogApp extends React.PureComponent {
       <Layout>
         <ErrorBoundary render={this.renderError}>
           <Router>
-            <Route path="/" render={props => <NewsLoader {...props} />} />
+            <Route 
+              path="/" 
+              render={props => <NewsLoader {...props} />} 
+            />
             <Route
               path="/:id"
               render={props => <NewsByIdLoader id={props.match.params.id} />}
