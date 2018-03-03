@@ -1,19 +1,11 @@
 import React from "react";
-import Loadable from "react-loadable";
 
 import ErrorBoundary from './components/ErrorBoundary';
 import { Route, Router } from './components/Router';
 import Layout from "./containers/Layout";
 
-const NewsLoader = Loadable({
-  loader: () => import(/* webpackChunkName: nws */"./containers/News"),
-  loading: () => <h1>Loading..</h1>
-});
-
-const NewsByIdLoader = Loadable({
-  loader: () => import(/* webpackChunkName: nws-by-id */ "./containers/NewsById"),
-  loading: () => <h1>Loading..</h1>
-});
+import NewsLoader from './containers/News';
+import NewsByIdLoader from './containers/NewsById';
 
 export default class BlogApp extends React.Component {
   render() {
