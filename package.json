@@ -6,6 +6,8 @@
   "homepage": "https://codesandbox.io/s/new",
   "main": "src/index.js",
   "dependencies": {
+    "history": "^4.7.2",
+    "path-to-regexp": "^2.1.0",
     "react": "16.4.0-alpha.0911da3",
     "react-dom": "16.4.0-alpha.0911da3",
     "react-loadable": "5.3.1",
