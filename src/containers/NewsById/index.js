@@ -1,14 +1,14 @@
 import "./index.css";
 
 import React from "react";
-import { createResource } from "simple-cache-provider";
+import { createResource as createDataFetcher } from "simple-cache-provider";
 
 import Placeholder from "../../components/Placeholder";
 
 import withLayout from "../../hocs/withLayout";
 import withCache from "../../hocs/withCache";
 
-const newsByIdFetcher = createResource(async id => {
+const newsByIdFetcher = createDataFetcher(async id => {
   const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`);
   return await res.json();
 });
