@@ -7,7 +7,7 @@ import Layout from "./containers/Layout";
 import NewsLoader from './containers/News';
 import NewsByIdLoader from './containers/NewsById';
 
-export default class BlogApp extends React.Component {
+export default class BlogApp extends React.PureComponent {
   render() {
     return (
       <Layout>
