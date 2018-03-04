@@ -3,9 +3,9 @@ import "./index.css";
 import React from "react";
 import { createResource as createFetcher } from "simple-cache-provider";
 
-import Placeholder from '../../components/Placeholder';
 import { Link } from '../../components/Router';
-import withCache from "../../hocs/withCache";
+
+import withPlaceholderAndCache from "../../hocs";
 
 const newsFetcher = createFetcher(async () => {
   const res = await fetch(`https://jsonplaceholder.typicode.com/posts`);
@@ -26,11 +26,9 @@ class News extends React.PureComponent {
     news.length = 99;
 
     return (
-      <Placeholder ms={200} render={() => <h1>Loading..</h1>}>
-        <div className="row">
-          {news.map(this.renderItem)}
-        </div>
-      </Placeholder>
+      <div className="row">
+        {news.map(this.renderItem)}
+      </div>
     );
   }
 
@@ -51,4 +49,4 @@ class News extends React.PureComponent {
   );
 }
 
-export default withCache(News);
+export default withPlaceholderAndCache(News);
