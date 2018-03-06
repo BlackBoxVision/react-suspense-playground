@@ -6,12 +6,8 @@ import BlogApp from "./app";
 const container = document.getElementById("root");
 const root = ReactDOM.createRoot(container);
 
-const AsyncMode = React.unstable_AsyncMode;
-
-ReactDOM.unstable_deferredUpdates(() =>
-  root.render(
-    <AsyncMode>
-      <BlogApp />
-    </AsyncMode>
-  )
-);
+root.render(
+  <React.unstable_AsyncMode>
+    <BlogApp />
+  </React.unstable_AsyncMode>
+)

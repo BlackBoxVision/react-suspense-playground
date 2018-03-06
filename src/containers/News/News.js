@@ -3,6 +3,7 @@ import "./index.css";
 import React from "react";
 import { createResource as createFetcher } from "simple-cache-provider";
 
+import Component from "../../components/Component";
 import { Link } from '../../components/Router';
 
 import withPlaceholderAndCache from "../../hocs";
@@ -12,7 +13,7 @@ const newsFetcher = createFetcher(async () => {
   return await res.json();
 });
 
-class News extends React.PureComponent {
+class News extends Component {
   static getDerivedStateFromProps = (nextProps, prevState) => ({
     news: newsFetcher(nextProps.cache)
   });

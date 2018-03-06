@@ -3,6 +3,8 @@ import { createBrowserHistory } from 'history';
 
 import { matchPath } from '../utils/matchPath';
 
+import Component from './Component';
+
 const RouterContext = React.createContext(null);
 
 export const withRouter = Comp => props => (
@@ -11,7 +13,7 @@ export const withRouter = Comp => props => (
     </RouterContext.Consumer>
 );
 
-export class Router extends React.PureComponent {
+export class Router extends Component {
     history = createBrowserHistory();
 
     state = {
@@ -20,7 +22,7 @@ export class Router extends React.PureComponent {
 
     componentDidMount() {
         this.history.listen(() => {
-            this.setState({
+            this.deferSetState({
                 location: this.history.location,
             });
         });
@@ -40,7 +42,7 @@ export class Router extends React.PureComponent {
     }
 }
 
-class RouteImpl extends React.PureComponent {
+class RouteImpl extends Component {
     state = {
         match: matchPath(this.props.location.pathname, this.props.path),
     };
@@ -53,6 +55,7 @@ class RouteImpl extends React.PureComponent {
         const { location, history, render, component: Component } = this.props;
         const { match } = this.state;
         const props = { location, history, match };
+
         if (match && match.isExact) {
             if (render) {
                 return render(props);
@@ -69,7 +72,7 @@ class RouteImpl extends React.PureComponent {
 
 export const Route = withRouter(RouteImpl);
 
-class LinkImpl extends React.PureComponent {
+class LinkImpl extends Component {
     handleClick = e => {
         e.preventDefault();
         this.props.history.push(this.props.to);
